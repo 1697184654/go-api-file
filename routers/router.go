@@ -8,18 +8,13 @@
 package routers
 
 import (
-	"go-api-file/controllers"
-
 	"github.com/astaxie/beego"
+	"go-api-file/controllers"
 )
 
 func init() {
+	beego.Router("/", &controllers.IndexController{}, "get:Index")
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
 		beego.NSNamespace("/user",
 			beego.NSInclude(
 				&controllers.UserController{},
