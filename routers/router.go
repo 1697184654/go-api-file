@@ -14,12 +14,6 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.IndexController{}, "get:Index")
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	beego.Router("/visit-count", &controllers.IndexController{}, "get:VisitCount")
+	beego.Router("/sign-up", &controllers.IndexController{}, "post:SignUp")
 }
