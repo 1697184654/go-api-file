@@ -17,15 +17,15 @@ type Files struct {
 func (f *Files) openFile(mode string, perm os.FileMode) *os.File {
 	var flag int
 	if mode == "a+" {
-		flag = os.O_RDWR | os.O_APPEND
+		flag = os.O_RDWR | os.O_APPEND | os.O_CREATE
 	} else if mode == "r" {
 		flag = os.O_RDONLY
 	} else if mode == "w" {
-		flag = os.O_WRONLY
+		flag = os.O_WRONLY | os.O_CREATE
 	} else {
-		flag = os.O_RDWR
+		flag = os.O_RDWR | os.O_CREATE
 	}
-	file, err := os.OpenFile(f.FileName, flag, perm)
+	file, err := os.OpenFile(f.FileName, flag, 0777)
 	if err != nil {
 		log.Fatal(err)
 	}

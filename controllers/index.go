@@ -10,15 +10,21 @@ type IndexController struct {
 	beego.Controller
 }
 
+// @TitLe 首页
+// @Description 首页简介
 // @router / [get]
 func (c *IndexController) Index() {
 	c.Ctx.WriteString("API")
 	return
 }
 
+// @Title 报名
+// @Description 用户报名
 // @Param user_name
 // @Param email
 // @Param tel
+// @Success 200 {object} responses.IndexSignUp
+// @Failure 500 {object} responses.IndexSignUp
 // @router /sign-up [post]
 func (c *IndexController) SignUp() {
 	userInfo := requests.UserInfo{}
@@ -30,6 +36,7 @@ func (c *IndexController) SignUp() {
 	c.ServeJSON()
 }
 
+// @Title 记录用户访问数
 // @router /visit-count [get]
 func (c *IndexController) VisitCount() {
 

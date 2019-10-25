@@ -13,7 +13,7 @@ type IndexSignUp struct {
 
 func (r *IndexSignUp) Process(request requests.UserInfo) IndexSignUp {
 	record := "\"" + request.UserName + "\",\"" + request.Email + "\",\"" + request.Tel + "\"\n"
-	file := services.Files{FileName: "sign_up.txt"}
+	file := services.Files{FileName: "./sign_up.txt"}
 	file.Write(record, "a+")
 	r.Code = "0"
 	r.Message = "success"

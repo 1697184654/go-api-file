@@ -16,7 +16,7 @@ type IndexVisitCountData struct {
 }
 
 func (r *IndexVisitCount) Process() IndexVisitCount {
-	file := services.Files{FileName: "visit_count.txt"}
+	file := services.Files{FileName: "./visit_count.txt"}
 	str := file.ReadAll()
 	count, _ := strconv.ParseInt(str, 10, 64)
 	count = count + 1
